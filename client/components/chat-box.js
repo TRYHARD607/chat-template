@@ -5,7 +5,6 @@ import ChatMessages from './chat-messages'
 import MessageInput from './message-input'
 
 const Chat = () => {
-
   return (
     <div className="w-full flex flex-col">
       <ChatHeader />
