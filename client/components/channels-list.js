@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-
 import { enterToChannel } from '../redux/reducers/channels'
 
 const ChannelList = () => {
@@ -12,11 +11,19 @@ const ChannelList = () => {
     <div className="mb-6 py-1 px-4 text-white font-semi-bold">
       {Object.keys(channels).map((channel) => {
         return (
-          <div key={channel.name} className={`cursor-pointer ${active === channels[channel].name ? "bg-teal-600" : ''}`}>
-            <span className="pr-1 text-grey-300">#</span> 
-            <button type="button" onClick={() => {
-              dispatch(enterToChannel(channels[channel].name))
-            }}>{channels[channel].name}</button> 
+          <div
+            key={channel.name}
+            className={`cursor-pointer ${active === channels[channel].name ? 'bg-teal-600' : ''}`}
+          >
+            <span className="pr-1 text-grey-300">#</span>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(enterToChannel(channels[channel].name))
+              }}
+            >
+              {channels[channel].name}
+            </button>
           </div>
         )
       })}

@@ -21,9 +21,13 @@ const ShowMessages = () => {
             <div className="flex flex-col">
               <div className="flex items-end">
                 <span className="font-bold text-md mr-2 font-sans">{message.tag}</span>
-                <span className="text-grey-500 text-xs font-light">{format(message.time, 'MM/dd/yyyy k:m:s')}</span>
+                <span className="text-grey-500 text-xs font-light">
+                  {format(message.time, 'MM/dd/yyyy k:m:s')}
+                </span>
               </div>
-              <p className="font-light text-md text-grey-800 pt-1"><ReactMarkdown source={message.text} /></p>
+              <p className="font-light text-md text-grey-800 pt-1">
+                <ReactMarkdown source={message.text} />
+              </p>
             </div>
           </div>
         )
