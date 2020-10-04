@@ -1,11 +1,12 @@
 import Cookies from 'universal-cookie'
-import { history } from '..'
+import { getSocket, history } from '..'
 
 const UPDATE_LOGIN = 'UPDATE_LOGIN'
 const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
 const LOGIN = 'LOGIN'
+const SYSTEM_WELCOM = 'SYSTEM_WELCOM'
 
-const cookies = new Cookies
+const cookies = new Cookies()
 const initialState = {
   email: '',
   password: '',
@@ -51,6 +52,7 @@ export function signIn() {
       .then((r) => r.json())
       .then((data) => {
         dispatch({ type: LOGIN, token: data.token, user: data.user })
+        getSocket().send(JSON.stringify({ type: SYSTEM_WELCOM, username: data.user.username }))
         history.push('/private')
       })
   }
@@ -61,7 +63,11 @@ export function trySignIn() {
     fetch('/api/v1/auth')
       .then((r) => r.json())
       .then((data) => {
+        setTimeout(() => {
+          getSocket().send(JSON.stringify({ type: SYSTEM_WELCOM, username: data.user.username }))
+        }, 1000)
         dispatch({ type: LOGIN, token: data.token, user: data.user })
+
         history.push('/private')
       })
   }

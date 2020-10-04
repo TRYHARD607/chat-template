@@ -11,10 +11,10 @@ import {
 
 const RegisterForm = () => {
   const dispatch = useDispatch()
-  const username = useSelector((s) => s.register.username)
-  const email = useSelector((s) => s.register.email)
-  const password = useSelector((s) => s.register.password)
-  const confirmPassword = useSelector((s) => s.register.confirmPassword)
+  const username = useSelector((s) => s.reg.username)
+  const email = useSelector((s) => s.reg.email)
+  const password = useSelector((s) => s.reg.password)
+  const confirmPassword = useSelector((s) => s.reg.confirmPassword)
   const isPasswordMatch = () => {
     return password === confirmPassword && password.length > 5
   }

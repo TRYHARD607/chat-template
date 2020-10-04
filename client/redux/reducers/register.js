@@ -45,7 +45,7 @@ export function updateConfirmPasswordField(confirmPassword) {
 
 export function register() {
   return (dispatch, getState) => {
-    const { username, email, password } = getState().register
+    const { username, email, password } = getState().reg
     fetch('/api/v1/register', {
       method: 'POST',
       headers: {

@@ -9,20 +9,21 @@ const ChannelList = () => {
   const dispatch = useDispatch()
   return (
     <div className="mb-6 py-1 px-4 text-white font-semi-bold">
-      {Object.keys(channels).map((channel) => {
+      {channels.map(({ name }) => {
         return (
           <div
-            key={channel.name}
-            className={`cursor-pointer ${active === channels[channel].name ? 'bg-teal-600' : ''}`}
+            key={name}
+            className={`cursor-pointer ${active.slice(1) === name ? 'bg-teal-600' : ''}`}
           >
             <span className="pr-1 text-grey-300">#</span>
             <button
+              className="w-11/12 text-left focus:outline-none"
               type="button"
               onClick={() => {
-                dispatch(enterToChannel(channels[channel].name))
+                dispatch(enterToChannel(`#${name}`))
               }}
             >
-              {channels[channel].name}
+              {name}
             </button>
           </div>
         )
@@ -30,7 +31,7 @@ const ChannelList = () => {
     </div>
   )
 }
-// bg-teal-600
+
 ChannelList.propTypes = {}
 
 export default ChannelList
