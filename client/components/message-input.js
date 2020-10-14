@@ -5,8 +5,12 @@ import { sendMessage } from '../redux/reducers/channels'
 const MessageInput = () => {
   const [message, setMessage] = useState('')
   const active = useSelector((s) => s.channels.active)
-
   const dispatch = useDispatch()
+
+  const sendNewMessage = () => {
+    dispatch(sendMessage(message))
+    setMessage('')
+  }
 
   return (
     <div className="flex m-6 rounded-lg border-2 border-grey overflow-hidden">
@@ -15,15 +19,19 @@ const MessageInput = () => {
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={({ key }) => {
+          if (key === 'Enter') {
+            sendNewMessage()
+          }
+        }}
         className="w-full px-4"
-        placeholder={`Message to #${active}`}
+        placeholder={`Message to ${active}`}
       />
       <button
         type="button"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
         onClick={() => {
-          dispatch(sendMessage(message))
-          setMessage('')
+          sendNewMessage()
         }}
       >
         Send

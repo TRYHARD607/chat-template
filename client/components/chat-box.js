@@ -6,7 +6,7 @@ import MessageInput from './message-input'
 
 const Chat = () => {
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col min-h-screen max-h-screen">
       <ChatHeader />
       <ChatMessages />
       <MessageInput />

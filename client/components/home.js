@@ -5,7 +5,7 @@ import Chat from './chat-box'
 
 const Home = () => {
   return (
-    <div className="w-full border shadow">
+    <div className="w-full border shadow min-h-screen">
       <div className="flex">
         <Sidebar />
         <Chat />
